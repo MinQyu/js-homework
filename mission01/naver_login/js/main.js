@@ -28,6 +28,7 @@ const loginForm = document.querySelector(".login-form");
 
 function handleSubmit(e) {
   e.preventDefault();
+
   const idInput = loginForm.querySelector("#userEmail");
   const idInputValue = idInput.value;
   const pwInput = loginForm.querySelector("#userPassword");
@@ -47,17 +48,17 @@ function handleSubmit(e) {
     pwInput.classList.remove("is--invalid");
   }
 
-  if (!(idInputValue === user.id)) {
-    alert("id가 일치하지 않습니다");
+  if (idInputValue !== user.id) {
+    alert("ID가 일치하지 않습니다.");
     return;
-  } else {
-    if (!(pwInputValue === user.pw)) {
-      alert("비밀번호가 일치하지 않습니다");
-      return;
-    } else {
-      window.location.href = "welcome.html";
-    }
   }
+
+  if (pwInputValue !== user.pw) {
+    alert("비밀번호가 일치하지 않습니다.");
+    return;
+  }
+
+  window.location.href = "welcome.html";
 }
 
 loginForm.addEventListener("submit", handleSubmit);
